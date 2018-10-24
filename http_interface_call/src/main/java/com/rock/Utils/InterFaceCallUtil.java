@@ -70,15 +70,12 @@ public class InterFaceCallUtil {
         StringBuffer buffer = new StringBuffer();
 
 
-        try (
-                BufferedReader in = new BufferedReader(new InputStreamReader(entitys.getContent(), "UTF-8"))
-        ) {
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(entitys.getContent(), "UTF-8"))) {
             String line = null;
             while ((line = in.readLine()) != null) {
                 buffer.append(line);
             }
         }
-
         return buffer.toString();
     }
 
