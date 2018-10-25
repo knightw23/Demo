@@ -17,14 +17,12 @@ public class InterFaceCallUtil {
     /**
      * POST请求
      *
-     * @param url    请求URL
-     * @param object 参数对象
-     * @return 结果JSON字符串
+     * @param url        请求URL
+     * @param parameJson 参数Json字符串
+     * @return 响应结果JSON字符串
      * @throws Exception
      */
-    public static String doPost(String url, Object object) throws Exception {
-        String parameter = JSON.toJSONString(object);
-
+    public static String doPost(String url, String parameJson) throws Exception {
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
         HttpPost httpPost = new HttpPost(url);
 
@@ -32,7 +30,7 @@ public class InterFaceCallUtil {
         httpPost.addHeader(HTTP.CONTENT_TYPE, "application/json");
 
         StringEntity entity;
-        entity = new StringEntity(parameter);
+        entity = new StringEntity(parameJson);
 
         httpPost.setEntity(entity);
         HttpResponse response;
@@ -47,7 +45,6 @@ public class InterFaceCallUtil {
                 buffer.append(line);
             }
         }
-
         return buffer.toString();
     }
 
@@ -55,7 +52,7 @@ public class InterFaceCallUtil {
      * GET方式请求
      *
      * @param url 请求URL注意拼接上参数
-     * @return 响应回来的数据
+     * @return 响应回来的数据Json字符串
      * @throws Exception
      */
     public static String doGet(String url) throws Exception {
@@ -69,7 +66,7 @@ public class InterFaceCallUtil {
         HttpEntity entitys = response.getEntity();
         StringBuffer buffer = new StringBuffer();
 
-
+        //读取数据
         try (BufferedReader in = new BufferedReader(new InputStreamReader(entitys.getContent(), "UTF-8"))) {
             String line = null;
             while ((line = in.readLine()) != null) {
@@ -78,7 +75,5 @@ public class InterFaceCallUtil {
         }
         return buffer.toString();
     }
-
-
 }
 
