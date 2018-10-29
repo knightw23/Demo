@@ -19,9 +19,6 @@ import java.io.*;
 */
 public class InterFaceCallUtil {
 
-    public static void main(String[] args) {
-        httpDownloadFile("http://127.0.0.1:8080/getImage", "D:\\iamge\\a.jpg");
-    }
 
     /**
      * POST请求
