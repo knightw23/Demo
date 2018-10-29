@@ -1,19 +1,28 @@
 package com.rock.Utils;
 
-import com.alibaba.fastjson.JSON;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.http.protocol.HTTP;
+import org.apache.http.util.EntityUtils;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.*;
 
+/**
+*java 请求HTTP接口
+*/
 public class InterFaceCallUtil {
+
+    public static void main(String[] args) {
+        httpDownloadFile("http://127.0.0.1:8080/getImage", "D:\\iamge\\a.jpg");
+    }
+
     /**
      * POST请求
      *
@@ -75,5 +84,6 @@ public class InterFaceCallUtil {
         }
         return buffer.toString();
     }
+
 }
 
