@@ -19,7 +19,6 @@ import java.io.*;
 */
 public class InterFaceCallUtil {
 
-
     /**
      * POST请求
      *
