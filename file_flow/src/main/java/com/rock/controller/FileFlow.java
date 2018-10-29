@@ -19,13 +19,11 @@ public class FileFlow {
     @RequestMapping(value = "/getImageGet", method = RequestMethod.GET)
     public void downImageGet(HttpServletResponse response) {
 
-        OutputStream output = null;
-        FileInputStream input = null;
-        try {
-            output = response.getOutputStream();
-            //文件地址
-            input = new FileInputStream("D:\\Software\\IDEAImage\\wallhaven-700058.jpg");
-
+        try (
+                OutputStream output = response.getOutputStream();
+                //文件地址
+                FileInputStream input = new FileInputStream("D:\\Software\\IDEAImage\\wallhaven-700058.jpg");
+        ) {
             byte[] bts = new byte[1024];
             int len = -1;
             while ((len = input.read(bts)) != -1) {
@@ -40,13 +38,11 @@ public class FileFlow {
     @RequestMapping(value = "/getImagePost", method = RequestMethod.POST)
     public void downImage(HttpServletResponse response) {
 
-        OutputStream output = null;
-        FileInputStream input = null;
-        try {
-            output = response.getOutputStream();
-            //文件地址
-            input = new FileInputStream("D:\\Software\\IDEAImage\\wallhaven-700058.jpg");
-
+        try (
+                OutputStream output = response.getOutputStream();
+                //文件地址
+                FileInputStream input = new FileInputStream("D:\\Software\\IDEAImage\\wallhaven-700058.jpg");
+        ) {
             byte[] bts = new byte[1024];
             int len = -1;
             while ((len = input.read(bts)) != -1) {
